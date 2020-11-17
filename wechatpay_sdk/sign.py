@@ -19,7 +19,7 @@ def gen_sign_v2():
     pass
 
 
-def gen_sign_v3(method, api, body, com_private_key_pem: str) -> bytes:
+def gen_sign_v3(method, api, body, com_private_key_pem: bytes) -> bytes:
     """
     生成微信支付V3版本API签名
     :return:
