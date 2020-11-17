@@ -19,7 +19,7 @@ def gen_sign_v2():
     pass
 
 
-def gen_sign_v3(method, api, body, com_private_key_pem: str):
+def gen_sign_v3(method, api, body, com_private_key_pem: str) -> bytes:
     """
     生成微信支付V3版本API签名
     :return:
@@ -31,13 +31,13 @@ def gen_sign_v3(method, api, body, com_private_key_pem: str):
     raw_sign_str: str = '\n'.join([method, api, current_timestamp_str, nonce_str, body])
     # 计算签名值
     # https://wechatpay-api.gitbook.io/wechatpay-api-v3/qian-ming-zhi-nan-1/qian-ming-sheng-cheng#gou-zao-qian-ming-chuan
-    sign = base64.b64encode(rs256_sign_with_pem(raw_sign_str, com_private_key_pem))
+    sign = base64.b64encode(rs256_sign_with_pem(raw_sign_str.encode('utf-8'), com_private_key_pem))
     return sign
 
 
 # ----- 验证签名 -----
 
-def verify_sign_v3(sign: str, wxp_public_key_pem: str) -> bool:
+def verify_sign_v3(sign: bytes, wxp_public_key_pem: bytes) -> bool:
     """
     验证微信支付V3版本API签名
 

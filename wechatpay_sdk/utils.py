@@ -24,7 +24,7 @@ def gen_random_str(length: int) -> str:
 
 # ----- RS256算法 -----
 
-def rs256_sign_with_pem(message: str, private_key_pem: str):
+def rs256_sign_with_pem(message: bytes, private_key_pem: bytes):
     """
     RS256签名算法，即SHA256 with RSA算法；私钥文件为pem格式的字节串
 
@@ -43,14 +43,14 @@ def rs256_sign_with_pem(message: str, private_key_pem: str):
     )
 
 
-def rs256_verify_with_pem(message: str, public_key_pem: str):
+def rs256_verify_with_pem(message: bytes, public_key_pem: bytes):
     """
     RS256签名验证算法；公钥文件为pem格式的字节串
     :param message:
     :param public_key_pem:
     :return:
     """
-    public_key: rsa.RSAPublicKey = load_pem_public_key(public_key_pem.encode('utf-8'))
+    public_key: rsa.RSAPublicKey = load_pem_public_key(public_key_pem)
     try:
         public_key.sign(
             message,
