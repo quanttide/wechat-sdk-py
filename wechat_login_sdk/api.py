@@ -1,25 +1,15 @@
 # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
-微信登录获取OpenID和AccessToken
+微信登录服务端API
 
 作者：张果
-创建日期：2021-04-26
+创建日期：2021-06-11
 """
-
-import json
 
 import requests
 
-
-class AccessTokenException(Exception):
-    """
-    TODO: 设计Exception类
-     - 限制errcode的值的范围（-1，40029，45001），考虑使用枚举类型；
-     - 优化errmsg，如果没有定制再用原始errmsg代替。
-    """
-    def __init__(self):
-        self.errcode = None
-        self.errmsg = None
+from wechat_login_sdk.exceptions import WeChatLoginSDKException
 
 
 def get_access_token(appid: str, app_secret: str, code: str, is_mp: bool = False) -> dict:
@@ -63,11 +53,25 @@ def get_access_token(appid: str, app_secret: str, code: str, is_mp: bool = False
         .format(api_path=api_path, appid=appid, secret=app_secret, code_type=code_type, code=code)
 
     # 请求微信登录服务器
-    content = requests.get(login_url).content
+    # TODO: 如有必要，处理网络请求的异常码
+    r = requests.get(login_url)
     # 将json数据包转成字典
-    response: dict = json.loads(content)
+    data: dict = r.json()
 
-    if 'errcode' in response and response['errcode'] != '0':
+    if 'errcode' in data and data['errcode'] != '0':
         # TODO: 引入异常类
-        raise response
-    return response
+        raise data
+    return data
+
+
+def get_userinfo(openid, access_token):
+    """
+    获取unionid和userinfo
+    :param openid:
+    :param access_token:
+    :return:
+    """
+    user_info_url: str = 'https://api.weixin.qq.com/sns/userinfo?access_token={access_token}&openid={openid}' \
+        .format(access_token=access_token, openid=openid)
+    user_info: dict = requests.get(user_info_url).json()
+    return user_info
