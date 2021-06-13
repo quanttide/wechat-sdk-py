@@ -9,7 +9,7 @@
 
 import requests
 
-from wechat_login_sdk.exceptions import WeChatLoginSDKException
+from wechat_login_sdk.exception import WeChatLoginSDKException
 
 
 def get_access_token(appid: str, app_secret: str, code: str, is_mp: bool = False) -> dict:
@@ -59,8 +59,7 @@ def get_access_token(appid: str, app_secret: str, code: str, is_mp: bool = False
     data: dict = r.json()
 
     if 'errcode' in data and data['errcode'] != '0':
-        # TODO: 引入异常类
-        raise data
+        raise WeChatLoginSDKException(data['errcode'], data['errmsg'])
     return data
 
 
@@ -73,5 +72,8 @@ def get_userinfo(openid, access_token):
     """
     user_info_url: str = 'https://api.weixin.qq.com/sns/userinfo?access_token={access_token}&openid={openid}' \
         .format(access_token=access_token, openid=openid)
-    user_info: dict = requests.get(user_info_url).json()
-    return user_info
+    data: dict = requests.get(user_info_url).json()
+
+    if 'errcode' in data and data['errcode'] != '0':
+        raise WeChatLoginSDKException(data['errcode'], data['errmsg'])
+    return data

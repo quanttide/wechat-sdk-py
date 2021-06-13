@@ -13,3 +13,6 @@ class WeChatLoginSDKException(Exception):
     def __init__(self, errcode, errmsg):
         self.errcode = errcode
         self.errmsg = errmsg
+
+    def __str__(self):
+        return f'\n- error code: {self.errcode}\n- error message: {self.errmsg}'
