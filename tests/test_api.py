@@ -12,6 +12,10 @@ Env().read_env()
 
 
 class AccessTokenTestCase(unittest.TestCase):
+    @unittest.skipIf(True, '需要云端部署以后才能测试')
+    def test_get_access_token(self):
+        pass
+
     def test_get_access_token_with_invalid_code(self):
         invalid_code = 'gegwesgargasa'
         with self.assertRaises(WeChatLoginSDKException) as e:
