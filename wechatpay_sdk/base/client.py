@@ -2,10 +2,10 @@
 
 import requests
 
-from .algorithms import gen_sign_v3, verify_sign_v3
+from wechatpay_sdk.base.sign import gen_sign_v3
 
 
-class BaseAPIClient(object):
+class WeChatPayBaseAPIClient(object):
     def __init__(self, mch_id, serial_no, com_private_key_path):
         self.mch_id = mch_id
         self.serial_no = serial_no
