@@ -6,7 +6,7 @@
 import base64
 import time
 
-from wechatpay_sdk.base.utils import gen_random_str, rs256_sign_with_pem, rs256_verify_with_pem
+from wechat_sdk.wechatpay_sdk.base.utils import gen_random_str, rs256_sign_with_pem, rs256_verify_with_pem
 
 
 # ----- 生成签名 -----

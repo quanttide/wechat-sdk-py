@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from wechatpay_sdk.base.client import WeChatPayBaseAPIClient
+from wechat_sdk.wechatpay_sdk.base.client import WeChatPayBaseAPIClient
 
 
 # ----- 类格式接口 ----

@@ -3,8 +3,8 @@
 import unittest
 import os
 
-from wechat_login_sdk.api import get_access_token, get_userinfo
-from wechat_login_sdk.exception import WeChatLoginSDKException
+from wechat_sdk.wechat_login_sdk.api import get_access_token, get_userinfo
+from wechat_sdk.wechat_login_sdk.exception import WeChatLoginSDKException
 
 # 本地测试获取环境变量
 from environs import Env

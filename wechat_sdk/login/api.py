@@ -9,7 +9,7 @@
 
 import requests
 
-from wechat_login_sdk.exception import WeChatLoginSDKException
+from wechat_sdk.wechat_login_sdk.exception import WeChatLoginSDKException
 
 
 def get_access_token(appid: str, app_secret: str, code: str, is_mp: bool = False) -> dict:
