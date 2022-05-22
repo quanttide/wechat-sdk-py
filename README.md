@@ -9,3 +9,4 @@ Python SDK for WeChat by QuantTide Inc.
 
 
 ## Contributors
+
