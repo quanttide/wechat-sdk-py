@@ -1,0 +1,7 @@
+[default]
+# 容器内置环境变量
+# https://developers.weixin.qq.com/miniprogram/dev/wxcloudrun/src/development/weixin/
+CBR_ENV_ID = "@format {env[CBR_ENV_ID]}"
+MYSQL_USERNAME = "@jinja {{env.MYSQL_USERNAME | default()}}"
+MYSQL_PASSWORD = "@jinja {{env.MYSQL_PASSWORD | default()}}"
+MYSQL_ADDRESS = "@jinja {{env.MYSQL_ADDRESS | default()}}"

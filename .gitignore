@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> wxcloudrun
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -142,4 +145,3 @@ cython_debug/
 # IDE
 .vscode/
 .idea/
-
