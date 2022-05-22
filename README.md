@@ -1,1 +1,3 @@
-#wechat-sdk-py
+# wechat-sdk-py
+
+Python SDK for WeChat
