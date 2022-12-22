@@ -15,6 +15,9 @@ dependencies = [
     "cryptography",
     "requests",
 ]
+dev_dependencies = [
+    "responses"
+]
 # dynamic = ["version"]
 
 [project.license]
