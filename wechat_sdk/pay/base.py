@@ -38,3 +38,6 @@ class WeChatPayBaseAPIClient(object):
         # TODO: POST请求传入body，GET请求body为空
         response = requests.request(method, url, headers=headers)
         return response.data
+
+    def request_api(self, *args, **kwargs):
+        return self.request_api_v3(*args, **kwargs)

@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 微信支付签名算法业务逻辑的实现
+
+Ref:
+  - https://zhuanlan.zhihu.com/p/402449405?utm_source=ZHShareTargetIDMore&utm_medium=social&utm_oi=78763203231744
 """
 
 import base64
