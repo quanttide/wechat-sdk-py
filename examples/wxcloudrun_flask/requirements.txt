@@ -1,1 +1,2 @@
 Flask==2.2.2
+wechat-sdk-py==0.1.0a1

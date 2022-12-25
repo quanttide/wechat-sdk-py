@@ -6,6 +6,8 @@
 
 import requests
 
+from wechat_sdk.cloudrun.config import settings
+
 
 class WXCloudRunPayAPIClient:
     """
@@ -31,5 +33,22 @@ class WXCloudRunPayAPIClient:
         if int(return_data['errcode']) == 0 and return_data['errmsg'] == 'ok':
             return return_data['respdata']
 
-    def unifiedorder(self, data):
+    def unifiedorder(self, out_trade_no: str, body: str, total_fee: float, spbill_create_ip: str, callback_type: int, env_id=None, sub_mch_id=None):
+        """
+        统一下单API
+
+        官方文档：https://developers.weixin.qq.com/miniprogram/dev/wxcloudrun/src/development/pay/order/unified.html
+
+        :param out_trade_no:
+        :param body:
+        :param total_fee:
+        :param spbill_create_ip:
+        :param callback_type:
+        :param env_id:
+        :param sub_mch_id:
+        :return:
+        """
+        env_id = env_id or settings.CBR_ENV_ID
+        data = {
+        }
         return self.request_pay_api(api_name='unifiedorder', data=data)

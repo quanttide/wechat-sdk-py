@@ -2,7 +2,7 @@
 
 import requests
 
-from wechat_sdk.wechatpay_sdk.base.sign import gen_sign_v3
+from wechat_sdk.pay.sign import gen_sign_v3
 
 
 class WeChatPayBaseAPIClient(object):
